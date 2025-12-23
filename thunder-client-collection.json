@@ -1,0 +1,886 @@
+{
+  "clientName": "Thunder Client",
+  "collectionName": "TradeFlow AI - Complete API Collection",
+  "collectionId": "tradeflow-ai-collection",
+  "dateExported": "2025-12-23",
+  "version": "1.2",
+  "folders": [
+    {
+      "id": "auth-folder",
+      "name": "🔐 Authentication",
+      "containerId": "",
+      "created": "2025-12-23T07:33:31.000Z",
+      "sortNum": 10000
+    },
+    {
+      "id": "shipments-folder",
+      "name": "📦 Shipments",
+      "containerId": "",
+      "created": "2025-12-23T07:33:31.000Z",
+      "sortNum": 20000
+    },
+    {
+      "id": "documents-folder",
+      "name": "📄 Documents",
+      "containerId": "",
+      "created": "2025-12-23T07:33:31.000Z",
+      "sortNum": 30000
+    },
+    {
+      "id": "quotes-folder",
+      "name": "💰 Quotes",
+      "containerId": "",
+      "created": "2025-12-23T07:33:31.000Z",
+      "sortNum": 40000
+    },
+    {
+      "id": "tracking-folder",
+      "name": "📍 Tracking",
+      "containerId": "",
+      "created": "2025-12-23T07:33:31.000Z",
+      "sortNum": 50000
+    },
+    {
+      "id": "carriers-folder",
+      "name": "🚢 Carriers API",
+      "containerId": "",
+      "created": "2025-12-23T07:33:31.000Z",
+      "sortNum": 60000
+    },
+    {
+      "id": "customs-folder",
+      "name": "🛃 Customs (ICEGATE)",
+      "containerId": "",
+      "created": "2025-12-23T07:33:31.000Z",
+      "sortNum": 70000
+    }
+  ],
+  "requests": [
+    {
+      "id": "auth-register",
+      "name": "Register User (Supplier)",
+      "url": "http://localhost:8000/api/auth/register",
+      "method": "POST",
+      "sortNum": 10000,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"supplier@example.com\",\n  \"password\": \"SecurePass123!\",\n  \"name\": \"John Doe\",\n  \"company_name\": \"ABC Trading Co.\",\n  \"role\": \"supplier\",\n  \"phone\": \"+919876543210\",\n  \"gstin\": \"29ABCDE1234F1Z5\",\n  \"country\": \"IN\"\n}",
+        "form": []
+      },
+      "tests": [],
+      "folderId": "auth-folder"
+    },
+    {
+      "id": "auth-register-forwarder",
+      "name": "Register User (Forwarder)",
+      "url": "http://localhost:8000/api/auth/register",
+      "method": "POST",
+      "sortNum": 10100,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"forwarder@example.com\",\n  \"password\": \"SecurePass123!\",\n  \"name\": \"Jane Smith\",\n  \"company_name\": \"Global Logistics Ltd.\",\n  \"role\": \"forwarder\",\n  \"phone\": \"+919876543211\",\n  \"country\": \"IN\"\n}",
+        "form": []
+      },
+      "tests": [],
+      "folderId": "auth-folder"
+    },
+    {
+      "id": "auth-login",
+      "name": "Login",
+      "url": "http://localhost:8000/api/auth/login",
+      "method": "POST",
+      "sortNum": 10200,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"supplier@example.com\",\n  \"password\": \"SecurePass123!\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "set-env-var",
+          "custom": "json.access_token",
+          "action": "setenv",
+          "value": "{{access_token}}"
+        }
+      ],
+      "folderId": "auth-folder"
+    },
+    {
+      "id": "auth-me",
+      "name": "Get Current User",
+      "url": "http://localhost:8000/api/me",
+      "method": "GET",
+      "sortNum": 10300,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{access_token}}"
+        }
+      ],
+      "params": [],
+      "tests": [],
+      "folderId": "auth-folder"
+    },
+    {
+      "id": "shipments-list",
+      "name": "List All Shipments",
+      "url": "http://localhost:8000/api/shipments",
+      "method": "GET",
+      "sortNum": 20000,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{access_token}}"
+        }
+      ],
+      "params": [
+        {
+          "name": "page",
+          "value": "1",
+          "isPath": false
+        },
+        {
+          "name": "limit",
+          "value": "20",
+          "isPath": false
+        }
+      ],
+      "tests": [],
+      "folderId": "shipments-folder"
+    },
+    {
+      "id": "shipments-create",
+      "name": "Create Shipment",
+      "url": "http://localhost:8000/api/shipments",
+      "method": "POST",
+      "sortNum": 20100,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{access_token}}"
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"origin_port\": \"Mumbai (INMUN1)\",\n  \"destination_port\": \"Los Angeles (USLAX1)\",\n  \"incoterm\": \"FOB\",\n  \"cargo_type\": \"FCL\",\n  \"container_type\": \"40HC\",\n  \"container_qty\": 1,\n  \"goods_description\": \"Electronic Components\",\n  \"hs_code\": \"8542.31.00\",\n  \"gross_weight_kg\": 15000,\n  \"net_weight_kg\": 14500,\n  \"volume_cbm\": 65,\n  \"total_packages\": 500,\n  \"package_type\": \"Cartons\",\n  \"preferred_etd\": \"2024-12-15T00:00:00Z\",\n  \"preferred_eta\": \"2025-01-05T00:00:00Z\",\n  \"declared_value_usd\": 50000,\n  \"insurance_required\": true\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "set-env-var",
+          "custom": "json.id",
+          "action": "setenv",
+          "value": "{{shipment_id}}"
+        }
+      ],
+      "folderId": "shipments-folder"
+    },
+    {
+      "id": "shipments-get",
+      "name": "Get Shipment by ID",
+      "url": "http://localhost:8000/api/shipments/{{shipment_id}}",
+      "method": "GET",
+      "sortNum": 20200,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{access_token}}"
+        }
+      ],
+      "params": [],
+      "tests": [],
+      "folderId": "shipments-folder"
+    },
+    {
+      "id": "shipments-update",
+      "name": "Update Shipment",
+      "url": "http://localhost:8000/api/shipments/{{shipment_id}}",
+      "method": "PUT",
+      "sortNum": 20300,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{access_token}}"
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"status\": \"pending_quote\",\n  \"preferred_etd\": \"2024-12-20T00:00:00Z\"\n}",
+        "form": []
+      },
+      "tests": [],
+      "folderId": "shipments-folder"
+    },
+    {
+      "id": "shipments-delete",
+      "name": "Delete Shipment",
+      "url": "http://localhost:8000/api/shipments/{{shipment_id}}",
+      "method": "DELETE",
+      "sortNum": 20400,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{access_token}}"
+        }
+      ],
+      "params": [],
+      "tests": [],
+      "folderId": "shipments-folder"
+    },
+    {
+      "id": "documents-upload",
+      "name": "Upload Document",
+      "url": "http://localhost:8000/api/documents/upload",
+      "method": "POST",
+      "sortNum": 30000,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{access_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "formdata",
+        "raw": "",
+        "form": [
+          {
+            "name": "file",
+            "value": "",
+            "type": "file"
+          },
+          {
+            "name": "shipment_id",
+            "value": "{{shipment_id}}"
+          },
+          {
+            "name": "type",
+            "value": "commercial_invoice"
+          }
+        ]
+      },
+      "tests": [
+        {
+          "type": "set-env-var",
+          "custom": "json.document.id",
+          "action": "setenv",
+          "value": "{{document_id}}"
+        }
+      ],
+      "folderId": "documents-folder"
+    },
+    {
+      "id": "documents-list",
+      "name": "List Documents",
+      "url": "http://localhost:8000/api/documents",
+      "method": "GET",
+      "sortNum": 30100,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{access_token}}"
+        }
+      ],
+      "params": [
+        {
+          "name": "shipment_id",
+          "value": "{{shipment_id}}",
+          "isPath": false
+        }
+      ],
+      "tests": [],
+      "folderId": "documents-folder"
+    },
+    {
+      "id": "documents-get",
+      "name": "Get Document by ID",
+      "url": "http://localhost:8000/api/documents/{{document_id}}",
+      "method": "GET",
+      "sortNum": 30200,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{access_token}}"
+        }
+      ],
+      "params": [],
+      "tests": [],
+      "folderId": "documents-folder"
+    },
+    {
+      "id": "documents-extract",
+      "name": "Trigger Re-extraction",
+      "url": "http://localhost:8000/api/documents/{{document_id}}/extract",
+      "method": "POST",
+      "sortNum": 30300,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{access_token}}"
+        }
+      ],
+      "params": [],
+      "tests": [],
+      "folderId": "documents-folder"
+    },
+    {
+      "id": "quotes-list",
+      "name": "List Quotes",
+      "url": "http://localhost:8000/api/quotes",
+      "method": "GET",
+      "sortNum": 40000,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{access_token}}"
+        }
+      ],
+      "params": [
+        {
+          "name": "shipment_id",
+          "value": "{{shipment_id}}",
+          "isPath": false
+        }
+      ],
+      "tests": [],
+      "folderId": "quotes-folder"
+    },
+    {
+      "id": "quotes-create",
+      "name": "Create Quote (Forwarder)",
+      "url": "http://localhost:8000/api/quotes",
+      "method": "POST",
+      "sortNum": 40100,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{access_token}}"
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"shipment_id\": \"{{shipment_id}}\",\n  \"freight_amount_usd\": 2000,\n  \"fuel_surcharge\": 200,\n  \"thc_charges\": 150,\n  \"documentation_charges\": 100,\n  \"other_charges\": 0,\n  \"transit_time_days\": 18,\n  \"free_days_at_destination\": 7,\n  \"validity_date\": \"2024-12-31T23:59:59Z\",\n  \"routing\": \"Mumbai → Singapore → Los Angeles\",\n  \"vessel_name\": \"MSC MAYA\",\n  \"voyage_number\": \"MY-2401\",\n  \"container_type\": \"40HC\",\n  \"container_quantity\": 1,\n  \"remarks\": \"Direct service, no transshipment delays\",\n  \"terms_and_conditions\": \"Standard terms apply\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "set-env-var",
+          "custom": "json.id",
+          "action": "setenv",
+          "value": "{{quote_id}}"
+        }
+      ],
+      "folderId": "quotes-folder"
+    },
+    {
+      "id": "quotes-get",
+      "name": "Get Quote by ID",
+      "url": "http://localhost:8000/api/quotes/{{quote_id}}",
+      "method": "GET",
+      "sortNum": 40200,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{access_token}}"
+        }
+      ],
+      "params": [],
+      "tests": [],
+      "folderId": "quotes-folder"
+    },
+    {
+      "id": "quotes-accept",
+      "name": "Accept Quote",
+      "url": "http://localhost:8000/api/quotes/{{quote_id}}/accept",
+      "method": "POST",
+      "sortNum": 40300,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{access_token}}"
+        }
+      ],
+      "params": [],
+      "tests": [],
+      "folderId": "quotes-folder"
+    },
+    {
+      "id": "quotes-reject",
+      "name": "Reject Quote",
+      "url": "http://localhost:8000/api/quotes/{{quote_id}}/reject",
+      "method": "POST",
+      "sortNum": 40400,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{access_token}}"
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"reason\": \"Price too high\"\n}",
+        "form": []
+      },
+      "tests": [],
+      "folderId": "quotes-folder"
+    },
+    {
+      "id": "tracking-list",
+      "name": "List Tracking Events",
+      "url": "http://localhost:8000/api/tracking",
+      "method": "GET",
+      "sortNum": 50000,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{access_token}}"
+        }
+      ],
+      "params": [
+        {
+          "name": "shipment_id",
+          "value": "{{shipment_id}}",
+          "isPath": false
+        }
+      ],
+      "tests": [],
+      "folderId": "tracking-folder"
+    },
+    {
+      "id": "tracking-create",
+      "name": "Add Tracking Event",
+      "url": "http://localhost:8000/api/tracking",
+      "method": "POST",
+      "sortNum": 50100,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{access_token}}"
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"shipment_id\": \"{{shipment_id}}\",\n  \"status\": \"in_transit\",\n  \"location\": \"Singapore Port\",\n  \"description\": \"Vessel arrived at transshipment port\",\n  \"vessel_name\": \"MSC MAYA\",\n  \"voyage_number\": \"MY-2401\",\n  \"container_number\": \"MSCU1234567\",\n  \"actual_datetime\": \"2024-12-18T14:30:00Z\",\n  \"estimated_datetime\": \"2024-12-19T08:00:00Z\",\n  \"is_milestone\": true,\n  \"remarks\": \"On schedule\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "set-env-var",
+          "custom": "json.id",
+          "action": "setenv",
+          "value": "{{tracking_event_id}}"
+        }
+      ],
+      "folderId": "tracking-folder"
+    },
+    {
+      "id": "carriers-search-schedules",
+      "name": "Search Carrier Schedules",
+      "url": "http://localhost:8000/api/carriers/schedules/search",
+      "method": "POST",
+      "sortNum": 60000,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{access_token}}"
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"origin_port\": \"INMUN1\",\n  \"destination_port\": \"USLAX1\",\n  \"departure_date\": \"2024-12-20\",\n  \"cargo_type\": \"FCL\",\n  \"container_type\": \"40HC\"\n}",
+        "form": []
+      },
+      "tests": [],
+      "folderId": "carriers-folder"
+    },
+    {
+      "id": "carriers-get-rate-quote",
+      "name": "Get Rate Quote",
+      "url": "http://localhost:8000/api/carriers/rates/quote",
+      "method": "POST",
+      "sortNum": 60100,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{access_token}}"
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"origin_port\": \"INMUN1\",\n  \"destination_port\": \"USLAX1\",\n  \"cargo_type\": \"FCL\",\n  \"container_type\": \"40HC\",\n  \"container_quantity\": 1,\n  \"weight_kg\": 15000,\n  \"volume_cbm\": 65\n}",
+        "form": []
+      },
+      "tests": [],
+      "folderId": "carriers-folder"
+    },
+    {
+      "id": "carriers-create-booking",
+      "name": "Create Carrier Booking",
+      "url": "http://localhost:8000/api/carriers/bookings",
+      "method": "POST",
+      "sortNum": 60200,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{access_token}}"
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"shipment_id\": \"{{shipment_id}}\",\n  \"schedule_id\": \"SCH-2024-001\",\n  \"container_type\": \"40HC\",\n  \"container_quantity\": 1,\n  \"shipper_details\": {\n    \"name\": \"ABC Trading Co.\",\n    \"address\": \"Mumbai, India\",\n    \"contact\": \"+919876543210\"\n  },\n  \"consignee_details\": {\n    \"name\": \"XYZ Corp\",\n    \"address\": \"Los Angeles, USA\",\n    \"contact\": \"+1234567890\"\n  }\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "set-env-var",
+          "custom": "json.booking_id",
+          "action": "setenv",
+          "value": "{{booking_id}}"
+        }
+      ],
+      "folderId": "carriers-folder"
+    },
+    {
+      "id": "carriers-track-shipment",
+      "name": "Track Carrier Shipment",
+      "url": "http://localhost:8000/api/carriers/tracking/{{booking_id}}",
+      "method": "GET",
+      "sortNum": 60300,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{access_token}}"
+        }
+      ],
+      "params": [],
+      "tests": [],
+      "folderId": "carriers-folder"
+    },
+    {
+      "id": "carriers-ai-rate-prediction",
+      "name": "AI Rate Prediction",
+      "url": "http://localhost:8000/api/carriers/rates/predict",
+      "method": "POST",
+      "sortNum": 60400,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{access_token}}"
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"origin_port\": \"INMUN1\",\n  \"destination_port\": \"USLAX1\",\n  \"cargo_type\": \"FCL\",\n  \"container_type\": \"40HC\",\n  \"departure_date\": \"2024-12-20\",\n  \"historical_data_months\": 6\n}",
+        "form": []
+      },
+      "tests": [],
+      "folderId": "carriers-folder"
+    },
+    {
+      "id": "customs-icegate-authenticate",
+      "name": "ICEGATE - Authenticate",
+      "url": "http://localhost:8000/api/customs/icegate/authenticate",
+      "method": "POST",
+      "sortNum": 70000,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{access_token}}"
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"username\": \"your_icegate_username\",\n  \"password\": \"your_icegate_password\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "set-env-var",
+          "custom": "json.icegate_token",
+          "action": "setenv",
+          "value": "{{icegate_token}}"
+        }
+      ],
+      "folderId": "customs-folder"
+    },
+    {
+      "id": "customs-icegate-file-bill",
+      "name": "ICEGATE - File Bill of Entry",
+      "url": "http://localhost:8000/api/customs/icegate/bills",
+      "method": "POST",
+      "sortNum": 70100,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{access_token}}"
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"shipment_id\": \"{{shipment_id}}\",\n  \"bill_type\": \"import\",\n  \"port_code\": \"INMUN1\",\n  \"importer_exporter_code\": \"IEC1234567890\",\n  \"goods_description\": \"Electronic Components\",\n  \"hs_code\": \"8542.31.00\",\n  \"declared_value\": 50000,\n  \"currency\": \"USD\",\n  \"gross_weight_kg\": 15000,\n  \"net_weight_kg\": 14500,\n  \"packages\": 500,\n  \"package_type\": \"Cartons\"\n}",
+        "form": []
+      },
+      "tests": [
+        {
+          "type": "set-env-var",
+          "custom": "json.bill_id",
+          "action": "setenv",
+          "value": "{{bill_id}}"
+        }
+      ],
+      "folderId": "customs-folder"
+    },
+    {
+      "id": "customs-icegate-get-bill-status",
+      "name": "ICEGATE - Get Bill Status",
+      "url": "http://localhost:8000/api/customs/icegate/bills/{{bill_id}}/status",
+      "method": "GET",
+      "sortNum": 70200,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{access_token}}"
+        }
+      ],
+      "params": [],
+      "tests": [],
+      "folderId": "customs-folder"
+    },
+    {
+      "id": "customs-icegate-duty-calculation",
+      "name": "ICEGATE - Calculate Duty",
+      "url": "http://localhost:8000/api/customs/icegate/duty/calculate",
+      "method": "POST",
+      "sortNum": 70300,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{access_token}}"
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"hs_code\": \"8542.31.00\",\n  \"declared_value\": 50000,\n  \"currency\": \"USD\",\n  \"country_of_origin\": \"CN\",\n  \"port_code\": \"INMUN1\"\n}",
+        "form": []
+      },
+      "tests": [],
+      "folderId": "customs-folder"
+    },
+    {
+      "id": "customs-icegate-upload-documents",
+      "name": "ICEGATE - Upload Documents",
+      "url": "http://localhost:8000/api/customs/icegate/bills/{{bill_id}}/documents",
+      "method": "POST",
+      "sortNum": 70400,
+      "created": "2025-12-23T07:33:31.000Z",
+      "modified": "2025-12-23T07:33:31.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{access_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "formdata",
+        "raw": "",
+        "form": [
+          {
+            "name": "file",
+            "value": "",
+            "type": "file"
+          },
+          {
+            "name": "document_type",
+            "value": "invoice"
+          }
+        ]
+      },
+      "tests": [],
+      "folderId": "customs-folder"
+    }
+  ],
+  "environments": [
+    {
+      "name": "Local Development",
+      "default": true,
+      "data": [
+        {
+          "name": "base_url",
+          "value": "http://localhost:8000/api"
+        },
+        {
+          "name": "access_token",
+          "value": ""
+        },
+        {
+          "name": "shipment_id",
+          "value": ""
+        },
+        {
+          "name": "document_id",
+          "value": ""
+        },
+        {
+          "name": "quote_id",
+          "value": ""
+        },
+        {
+          "name": "tracking_event_id",
+          "value": ""
+        },
+        {
+          "name": "booking_id",
+          "value": ""
+        },
+        {
+          "name": "bill_id",
+          "value": ""
+        },
+        {
+          "name": "icegate_token",
+          "value": ""
+        }
+      ]
+    }
+  ]
+}
